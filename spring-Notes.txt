@@ -1,0 +1,63 @@
+Spring 
+
+Controller -means view 
+spring core -core and beans,context
+spring data-jdbc,orm,jms,oxm
+
+spring container is container of beans(objects)
+spring container works on factor pattern.
+
+object---->Bean factory<----spring xml
+
+application context when load the spring.xml it create the beans whatever defined and handover when get beans called.
+
+bean scope
+
+default bean scope is singleton per spring container. it is be default and it created once spring.xml loads without getbeans called.
+it always return the same instane.
+
+multipe spring cotainer can run in same jvm. so singleton scope is per conatiner.
+
+prototype- it create when get bean called and everytime create new instance.
+
+
+use application context aware-
+
+@Autowired
+it means you are injecting dependency 
+
+1) it can be apply on above property or constructor or setter.
+
+2) Autowiring can't be used to inject primitive and string values.
+
+3)it means you are writing property definition in xml file which is referring to some bean.
+
+4) first it checks by type and then by name.
+
+@Qualifer is used with @autowired
+to refer the actual bean if bean have same type or referring to same class
+
+
+@Required
+
+need to declare on setter which is required
+
+@Component/@Service/@Controller/@Repository
+
+
+1)all are similar and works with context component scan 
+
+2)all are defined at class level
+
+3)it means you are writing bean definition in xml file 
+
+
+@Resource(name="bean name") by default go with name of variable.
+
+
+@Post construct 
+if you want to call anything before processing the logic then you can apply same on method
+
+@Pre Destroy
+
+if you want to call anything after processing the logic then you can apply same on method
