@@ -1,0 +1,50 @@
+java 8
+
+functional inteface or Single abstract method (SAM) interface
+
+it has only 1 abstract method but default and static methods we can define.
+
+Ex- runnable , callable, comparable
+
+
+most imp-
+
+1) predicate--boolean test(T t);
+2) supplier--T get()
+3) consumer-- void accept(T t)
+4) Function--R apply(T t)
+
+
+
+
+method reference
+The method references can only be used to replace a single method of the lambda expression
+
+To refer to a method in an object 
+
+Object :: methodName 
+
+For eg- System.out::println
+
+if method is static static ---className::methodname
+
+
+Streams
+
+A stream is not a data structure instead it takes input from the Collections, Arrays, or I/O channels.
+Streams don’t change the original data structure, they only provide the result as per the pipelined method
+
+intermediate
+
+filter(predicate) Method 
+ sorted() Method 
+distinct() Method 
+map() Method
+
+terminal 
+
+min(),max(),count()
+forEach(),noneMatch()
+
+
+
