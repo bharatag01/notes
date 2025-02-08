@@ -1,0 +1,136 @@
+microservices 1
+
+API Gateway (e.g., Kong, Apigee, AWS API Gateway)-  Spring provides an API Gateway through Spring Cloud Gateway. It is a part of Spring Cloud.
+api gateway forward the user request to respective microservices based on request, path, header. it runs on diff server.-- project module check.
+
+
+Service oriented architecture
+
+1) code is in differnet aplication but they can use same dataabse . in microservice this is nota good practice. always talk through APi.
+
+OTT platform mostly follow SOA not microservices.
+
+
+communication between microservcies
+
+1) aysnchronous- message queues
+2) synchronous- drectly make an api call to ther service
+a) via http- when you need some data  but http add additional 200 bytes of data so it is overhead . taht why use RPC
+b) via RPC- when an user interacts with api agteway through http/https but after that ap gateway to load balancer and load balancer through rpc call.
+it breaks the connection at api gateway.so no over head and low latency.
+
+so at the end always call through RPC because http uses json which we have to serilaize and deserilaize but RPC uses Protocol Buffers which are bytes that can read by any
+programming language.
+
+user----> api gateway(written in java)( derserialize json to java object and again serlaize to json )----- LB (written in c) 
+
+json --object--deseralize 
+onject --json --serliaze
+
+so extra overhead means we have to serliaze and deserzlize every time with http but RPC is just like function call.
+
+
+in microservices db will not interact with each other. it always through APi call.
+
+
+Observability
+
+
+How diff microservices will do the logging.
+
+they will place all the logs in common place like splunk, elastic serach , cloudwatch in aws. and everyicroservice put teh request id which is common in all microservice.
+suppose user hit the request to api gateway then api gateway cretae request id and it transfer to diff micro service and all microservce wil print the same request id
+
+
+request id/ trace id/correlaion id are same thing and transfre from one system to anotehr  through districuted tracing.
+distrcibuting tracing-generating id and pass betwen diff microservices.
+
+
+alert system
+if ram usgae is high ,cpu usage
+exception
+application crash
+
+
+do anayltics on db suppose ram is high from past 30 min
+we use time series db.
+
+we can use pormethis +grafana. 
+
+consistency between microservices
+
+distributed transactions
+
+suppose we have to transfer money from 1 sbi account to other so you can start the transaction and take lock on both the accunts and do the money transfer.
+after taht release the lock so it will be atomic.
+
+but in case of transferring money from sbi to icici is not atomic. we can not follow ths sbi steps only because both have diff db and we have to take lock on both , do money trasfer
+and release teh lock so we are sending the two request in evey case which can be problem. if 1st request is success buth otehr doesnt then ?
+
+so better to use the below patterns
+1) two phase commit -- which is very bad idea 
+  tries to replicate sql transaction
+  a) take a lock on both the rows
+  once teh lock is confirmed
+  b)update the values
+  wait till both have confmred
+  c) release the lock on both
+  
+cons- suppose icici iserver is down so it will kep trying and sbi server will also slow because of lock.
+
+2) saga pattern
+
+in real world bans transaction is not atomic.
+in each step we define undo step . if anything breaks then will undo all steps
+
+a) orchestration pattern
+
+orechestratr control all teh steps and if anything breaks it undo all the steps.
+b) choregraphy pattern
+
+there is no single control. each service should know which one is next and if anything breaks it will undo all the steps.
+
+orchestrat is fast and easy to implemnt because of available frameworks
+choregraphy we have to implemt and write teh code
+orchestration is spof.
+
+3) CQRS pattern
+command-query-request-segregation.
+
+here command means update, delete and add while query means read.
+suppose we have to get all the orders of email id then send the request to order service but how we get the mail id.
+1) order servce will communicate with user service wich increase latency.
+2) will create the new data service which ahs relevant field and provide the results.
+
+in this case data service has its own databse which has user detals and order details but only email id  and id of user order details.
+how data services data will update ?
+every service send the queue messages to data servce if any change occurs.
+
+db interaction with diff microservices is not a good design.
+so here for particular read queries we have created diff service to improve the latency.
+
+4) circuit breaker pattern
+
+if any servce is down so we should not send the request contnusly otherwise sender service will also down and it will be cascading failure.
+to solve this  we are using global cache like redis.
+in redis we maintain the status of evry sevrice , intially all the status is closed means working.
+suppose order service wil send the request to email service so first check the status of email service if it is closed then fine , 
+in case of open dont send the request.
+
+in case of half open send 1% of request only.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
