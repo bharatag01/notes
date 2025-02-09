@@ -1,0 +1,71 @@
+How internet works
+
+1) request go to dns server then fetch the ip of domain.
+2) after get the ip it hit the website server.
+
+Dns server ip stores in system.
+
+how IPv4 define uniqie to each machine 
+
+because of NAT-network address translator. ISP set up their nat which has public IP but all the machines are connected to that NAT.
+so every machine has private ip which is duynamically change thats why we are not able to access someone machne.
+
+So we need public and static Ip to host our website.
+
+icann provides the domain and IP mapping to each dns server.
+
+How load balancer works
+load balancer sed the request to app server in roundrobin (randomly) and also check the server heath from heartbeat and health check.
+
+heartbeat- server send the request to LB every t seconds for alive status.
+healthcheck- LB send the rquest to server every t second for alive status
+healthcheck- LB send the rquest to server every t second for alive status
+
+Every app server register to Lb once it is up . SO LB has list of app server.
+
+
+Sharding - wehen we have to split the data between multiple machines of DB.
+so in case of bookmark we need to shard the data so we have to choose sharding key as user id.
+
+what should be good sharding key.
+
+
+- uniformly distribute the data
+-fast queries
+-adding and removal of shard should be fast.
+
+
+apprach-modulo 
+1) sharding_key%no of machines-- adding and removal shard will not be fast.
+2) range value distribution-- there is no uniform distribution of load because old id have more data.
+
+so the best solution is consistent ahshing to determne which db server has to go.
+
+Consistent hashing-- internally using in redis cassandra DB.
+
+suppose we have a ring and no are distributed across ring - 0 to 10^6 in prod
+
+we have a hash function hx which calculate the hash value of server and placed in ring and another function hy which caculate the hash function of shardng key
+suppose hx(s1)=3 hx(s2)=8
+hy(user_id)=5 - it will serve by S2 which is immediate next.
+
+it is fast, uniform and adding and removal of shard will not take much time.
+
+suppose if s1 server crash because of data load hen s2 again will die and it will be cascading failure so solution is opimized consistent hashing
+
+optimized consistent hashing
+
+we have three functions hx , hy and hz which calculates the hash value of S1, S2 , S3 
+
+so in the ring s1 is also present 3 times similarly s2 and s3 also. 
+
+now the ring will look like s1--> s2>>> s1->>>s3---->s1--->s2. suppose s1 died so s2>>>s3>>>>s2 so all load wil not be on 1 server there is randomized distribution
+and it causes less chance of cascading failure.
+
+
+
+
+
+
+
+
