@@ -1,1 +1,12 @@
+FOr submission of any problem it is running the test case and test case file size typiclaly 1 mb which store in file storage like s3.
+So to solve any problem first it need to accces file storage which be in diff data center and also load the 1 mb file and then execute the 
+test case so latency will be high.
+
+so how you solve this. so the solution is using local caching but the real problem arise whne any test case is updated.
+how app server knows test cases updated.
+
+We can use versioning here and save the file like key= problemId_timestamp and value = test case and check in db if this key is present or not 
+if yes then execute the test case else go to file storage and take the latest file and update the key- problemId_updatedTimeStamp and run the
+test case.
+
 
