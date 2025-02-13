@@ -1,1 +1,28 @@
+Suppose you have 8 GB of RAM and you want to process 16 GB file and also sort it.
 
+Step 1: Split the Large File into Small Sorted Chunks
+
+Read small parts of the file that fit in RAM.
+Sort them and save them as temporary sorted files.
+Step 2: Merge the Sorted Chunks Efficiently using external merge sort.
+
+Open all sorted chunks at once, but read only one line at a time from each.
+Use a priority queue (min-heap) to always get the smallest value.
+Write the smallest value to the final sorted file.
+Keep reading and merging until everything is sorted.
+
+Eg- Suppose you have original file which ahs names 
+Zara
+Mike
+Alice
+John
+Bob
+
+Chunks After Sorting
+Chunk 1 (chunk_0.txt)	Chunk 2 (chunk_1.txt)
+Alice	                   John
+Mike	                   Zara
+Bob	
+Each chunk is sorted individually, but the whole file is not yet fully sorted.
+
+Need to check the code.
