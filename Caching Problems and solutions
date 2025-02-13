@@ -26,3 +26,5 @@ Data loss is acceptable in situation. Pros- Write queries are Fast.
 
 c) Write around cache- Write in DB only. it is similar like TTL only.
 
+Write through cache and write back cache works in case of global cache.
+
