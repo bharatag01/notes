@@ -9,6 +9,10 @@ now again request comes at 69 sec so at that time it will go again to cache but 
 and save in cache again.
 User Hits at 60 Seconds (Exactly When TTL Expires)
 ⏳ This depends on the cache invalidation strategy:
+liFO
+lRU
+MRU
+FIFO
 
 2) Writng strategies
 a) Write through cache- write the data to cache then write to DB. but write fail in DB hen remove the write from cache and update user 
@@ -20,4 +24,5 @@ Cons - data loss while writing to DB it fails
 EG- live viewer count if supppose new user started to watch the match but write query fail so no issue.
 Data loss is acceptable in situation. Pros- Write queries are Fast.
 
-c) Write around cache-
+c) Write around cache- Write in DB only. it is similar like TTL only.
+
