@@ -7,6 +7,8 @@ Eg- hotstar viewer count. First time it fetch from DB and store in cache with TT
 within the next minute if any request comes so it will serve the data from cache. Here we are using global cache.
 now again request comes at 69 sec so at that time it will go again to cache but ttl expired so data will be removed then again go to DB
 and save in cache again.
+User Hits at 60 Seconds (Exactly When TTL Expires)
+⏳ This depends on the cache invalidation strategy:
 
 2) Writng strategies
 a) Write through cache- write the data to cache then write to DB. but write fail in DB hen remove the write from cache and update user 
