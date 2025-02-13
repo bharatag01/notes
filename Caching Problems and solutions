@@ -1,0 +1,21 @@
+Cache size is limited
+cache data might be stale/not sync with original server.
+
+Stale data solutions
+1) TTL - time to live - we can use this approach when we are ok for a particular time if data is stale.
+Eg- hotstar viewer count. First time it fetch from DB and store in cache with TTL of 1 min and after that return the data.
+within the next minute if any request comes so it will serve the data from cache. Here we are using global cache.
+now again request comes at 69 sec so at that time it will go again to cache but ttl expired so data will be removed then again go to DB
+and save in cache again.
+
+2) Writng strategies
+a) Write through cache- write the data to cache then write to DB. but write fail in DB hen remove the write from cache and update user 
+write is fail but if write succed in DB then infrm the user write is pass.
+con- write queries are slow. Pros- always db and cache are in sync.
+
+b) Write back cache- first write in cache and return success to user and after that asynchronoulsy write to DB
+Cons - data loss while writing to DB it fails
+EG- live viewer count if supppose new user started to watch the match but write query fail so no issue.
+Data loss is acceptable in situation. Pros- Write queries are Fast.
+
+c) Write around cache-
