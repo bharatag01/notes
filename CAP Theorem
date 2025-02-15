@@ -11,6 +11,7 @@ simultaneously: Consistency, Availability, and Partition tolerance.
 either system will be CA, CP,AP. but in distributed system there always wlll be partition so the system will never be consistent 
 and available. we have to choose either consistency or availbility.
 
+PACELC extends CAP by considering what happens when there is NO network failure or partition.
 PACELC -In the case of network partitioning (P) in a distributed computer system, one has to choose between availability (A) 
 and consistency (C).
 But else (E), even when the system is running normally in the absence of partitions, one has to choose between latency (L) and consistency (C). 
