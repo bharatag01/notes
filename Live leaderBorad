@@ -1,0 +1,9 @@
+Suppose hou have to design live leaderboard whne contest is running.
+So brute force solution- select * from from user sort by score limit 10 but in this case everytime user will hit the liveboard so it will 
+hit the db. so every request hit the db.
+
+Optimal solution- it is ok to live leaderboard little bit stale but everyone should get the same result. so will use global cache like 
+redis here and write stargety will be TTL.
+
+so in redis will store contest_id, list of users, TTL time. everytime user will hit teh request first it will hit the cache and check if 
+contest id data is present or not . if yes then return it else fetch it from db save it in cache and resturn the result.
