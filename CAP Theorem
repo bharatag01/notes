@@ -1,0 +1,29 @@
+C- Consistency
+A- Availability
+P-Partition Tolerance
+
+Sometimes system is available or consistent but not both.
+Partition-When software system get didvided so that both the system not able to reach each other.
+
+CAP Theorem-The CAP theorem states that a distributed system can only provide two of three properties 
+simultaneously: Consistency, Availability, and Partition tolerance. 
+
+either system will be CA, CP,AP. but in distributed system there always wlll be partition so the system will never be consistent 
+and available. we have to choose either consistency or availbility.
+
+PACELC -In the case of network partitioning (P) in a distributed computer system, one has to choose between availability (A) 
+and consistency (C).
+But else (E), even when the system is running normally in the absence of partitions, one has to choose between latency (L) and consistency (C). 
+So If there is no network partition, we have to choose between extremely low Latency or High consistency. 
+They both compete with each other.  
+
+Example- In a banking system, Consistency is important.
+so we want immediate consistency
+but in reality, ATM transactions (and a lot of other banking systems) use eventual consistency
+In a Facebook news feed-like system, availability is more important than the consistency. 
+For Quora, Availability is more important. 
+For Facebook Messenger, Consistency is even more important than availability 
+because miscommunication can lead to disturbance in human relations. 
+
+Consnsiteny system is diffcult to implement in comaprsion of avalable system because we have to follow concurrrency.
+Like Bank.
