@@ -1,0 +1,12 @@
+Facebook news feed shows the data of friends of a partcular user.
+
+Fist it do the sharding and store the data by doing the sharding on user_id.
+it stores all the data of 30 days of a particular user in global cache.
+Cache stores the user_id,post of last 30 days
+
+1 global cache machine will be bottle neck so we wll create lot of replica.
+News feed is supposed to show only recent posts from a friend.
+You don’t expect to see a year old post in your news feed. Let’s assume you only need to show posts made in the last 30 days.
+
+If users post frequently → Shorter TTL (e.g., 1-5 minutes).
+If updates are rare → Longer TTL (e.g., 15-30 minutes).
