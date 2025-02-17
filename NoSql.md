@@ -12,7 +12,7 @@
    match_id,score. Dynamo DB and redis are key value DB
 2) Document DB- when you have to store not the fixed attributes like product in  ecommerce.EVery product ahs diff attributes
    Eg-Mongo DB.
-3)Column DB- Instead of row by row it stores data column by column. EG-Cassandra.
+3) Column DB- Instead of row by row it stores data column by column. EG-Cassandra.
 Eg- when you have to fetch latest tweets of hastag or uber driver location history.
 
 
