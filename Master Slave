@@ -9,7 +9,7 @@ so system will never be consistent and data will be lost.
 
 Eventual consistency
 Master get the request and write it and also write to X slaves and send the reposne back to user successful.
-if master dies data will be in 1 slave atleast.
+if master dies data will be in 1 slave atleast. Eg- Facebook news feed
 
 Consistent
 Master get the request and write it and also write to all slaves and send the response to user.
