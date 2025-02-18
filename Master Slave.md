@@ -22,3 +22,5 @@ My writes will be very slow  and latency is very high.
 Read request always serve by any random slaves.
 
 If master died so we use leader election algorithm to decide the new master.
+
+Master-Slave (also called Primary-Replica) is ideal for scenarios where read scalability is needed, but writes can be handled by a single master.Eg- Social media feeds, Read heavy applications like blog.
