@@ -2,6 +2,7 @@ When a website’s traffic surges and the only database available is one master,
 on condition
 
 **Sharding**- when actual data cant fit in single machine.
+
 **Replica**-Queries can't be handled by 1 machine
 
 Master get the write queries and it is resposbility of master to send it to slaves.
