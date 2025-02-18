@@ -21,3 +21,4 @@ My writes will be very slow  and latency is very high.
 
 Read request always serve by any random slaves.
 
+If master died so we use leader election algorithm to decide the new master.
