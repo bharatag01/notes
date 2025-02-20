@@ -1,8 +1,8 @@
-Steps****
+**Steps**
 1) Functional requirement
    it covers the MVP(Minimum viable product). only cover 3-5 main features like in designing youtube most important is streaming and uploading videos.
    spent only 3-5 mins.
-2)Non Functional requirement
+2) Non Functional requirement
 Expectation on how those features worked.
 Consistency vs availability
 consistency vs latency.
