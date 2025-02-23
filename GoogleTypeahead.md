@@ -56,4 +56,26 @@ but we cant store both hashmap in 1 db so we have to store in cache machines lik
 we need to do sharding also so we can use sharding key as first 3 char.
 
 
+**how to handle read heavy and write heavy both**
+
+we cant control the read query but for write query we can use sampling technique which works on probability.
+suppose we randomly rejecting 90 % of request and only writing 10 % so also it gives the same result. This is sampling
+Twitter also find the trends according to sampling only and check in 10% request only.
+**so only caching is required here but for persistent the information we can use no sql db like cassandra and save while creating the backup of 1 hr each.
+here DB is not required because consistency is not issue and if everything will delete from cache so within 1hr all suggestions willl be same because of randominization**
+
+**How to hadndle recency**
+
+we can use time decay factor.
+suppose salman is serach till 1 lakh times and sachin is 25000 times
+so we can use time decay factor and divide the freq by time decay factor, suppose it is 10
+so salmand count is 10k and sachin count is 2500
+on next day salman search 5k and sachin 10k so total is salmand count is 15k but sachin count is 12500 and next day again divide by time decay factor so salman count is 1500 and sachin is 1250.
+on next day salman search 5k and sachin 10k so total is salmand count is 6500 but sachin count is 11250. 
+
+
+
+
+
+
 
