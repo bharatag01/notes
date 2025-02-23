@@ -73,6 +73,10 @@ so salmand count is 10k and sachin count is 2500
 on next day salman search 5k and sachin 10k so total is salmand count is 15k but sachin count is 12500 and next day again divide by time decay factor so salman count is 1500 and sachin is 1250.
 on next day salman search 5k and sachin 10k so total is salmand count is 6500 but sachin count is 11250. 
 
+Architectural diagram 
+
+user---> LB--->App Server---->cache---asynchronsly aved in db--DB
+
 
 
 
