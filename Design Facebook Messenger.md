@@ -30,9 +30,10 @@ it is both. message read atleast 1 time and send also 1 time.
 
 **API design**
 
-1) sendMessage(conersation_id, user_id,content)
-2) getMessages(conversation_id,content,timestamp)
-3) getRecentConversation(user_id)
+1) sendMessage(conversation_id, user_id,content)
+   If I click into a conversation, then I get the list of most recent messages. Let’s call that getMessages. 
+3) getMessages(conversation_id,content,timestamp)
+4) getRecentConversation(user_id)
 
 **HLD**
 
