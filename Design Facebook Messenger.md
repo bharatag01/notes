@@ -51,6 +51,7 @@ every message has timestamp+user_id+device_id to identify duplciate message.
 
 we can do sharding by user_id because it is 1:1 chat not group chat
 but in case of group chat we can use the comination of conversation_id+user_id.
+For systems like, Slack, MS Team, Telegram that can have large groups, userID based sharding will be ridiculously expensive.
 
 **How to maintain consistency of messages.**
 
