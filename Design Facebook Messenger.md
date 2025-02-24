@@ -1,0 +1,66 @@
+**Functional Requirements**
+
+1) Send and receive messages
+2) 1:1 chatting not group
+3) only text messages not photos/videos.
+4) message stored on backend not on device like whatsapp.
+5) Get my recent conversation
+
+**Non Functional Requirement**
+
+1) Availability vs consistency- We are looking for consistency . Here consistency means mesage sent but not receives at receiver db and order of messages also.
+2) low latency vs consistency- looking for consistency.
+
+**Back of Envelope Calculation**
+
+active users- 500 millon users= 50 cr
+daily messages per user= 500*10 million= 5 Billion messages per day
+
+RPS messages- 5 billion/10^5 = 5*10^9/10^5=5*10^4= 50 K messages per second.
+peak message per second= 1 lakh message per second.
+
+storage = mesage has user id, timestamp, content,receiver id= 100 B per message
+1 day = 5 *10^9*100 B= 5*10^11= 1 TB(approx)
+1 year=400 TB
+5 year=2 PB(peta byte)
+definetly we need sharding
+
+Read heavy or write heavy
+it is both. message read atleast 1 time and send also 1 time.
+
+**API design**
+
+1) sendMessage(conersation_id, user_id,content)
+2) getMessages(conversation_id,content,timestamp)
+3) getRecentConversation(user_id)
+
+**HLD**
+
+**How server will send a message to reciever**
+
+By using websocket
+it will create the pipeline between sender and receiver. only connection created once.
+
+**How to make sure messsage is delivered only once.**
+
+By using imdempotency
+every message has timestamp+user_id+device_id to identify duplciate message.
+
+**How to shard data.**
+
+we can do sharding by user_id because it is 1:1 chat not group chat
+but in case of group chat we can use the comination of conversation_id+user_id.
+
+**How to maintain consistency of messages.**
+
+suppose messages is going to send between A->B .so A gets delivered but B is not able to see the mesage.
+so first save in shard B and then A. suppose it doesnt save in shard A then take it from browser cache.
+
+**which DB to use**
+
+we can use cache to avoid multiple read from DB and save last 24 hrs messages in cache and user wil read from cache
+and also while writing will write through cache and for DB will use cassadra DB because of heavy write.
+
+
+
+
