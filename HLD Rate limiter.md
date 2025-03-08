@@ -49,7 +49,9 @@ so user will get any ip of api gateway and it hit the api gateway through which 
 
 so how api gateway will manage the rate limiting.
 
-approach 1- will take hasmap and for particular user stores the timestamp of every request.
+**approach 1-**
+
+will take hasmap and for particular user stores the timestamp of every request.
 
 List<Req> l=hm.get(u1);
 
@@ -62,7 +64,8 @@ reject;
 
 con- size of map will be huge if duration is huge.
 
-approach 2
+**approach 2**
+
 consider a new window starting every min
 and assume 5 req/day.
 
@@ -80,7 +83,7 @@ suppose if request comes at 10:00:56,10:00:57,10:00:58,10:00:59,10:01:00,10:01:0
 
 so you serve 7 request within 1 min.
 
-apprach 3
+**approach 3**
 
 so this apprach is similar like apprach 2 but it can cnsider the pre min request also not ignoring completely.so it is bit more exact in comaprioson to previos one
 
