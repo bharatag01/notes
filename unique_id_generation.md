@@ -73,10 +73,14 @@ so thats why always use getTime+server_id from each server.
 
 timestamp+datacenter_id(has multiple data center in same server)+server_id+counter(how many id generated till now by that server in that data center in that millsecond)
 
-we can use uuid -- which is universal unique identifier- which gives incremetal id from uuuid v7 and internally it is integer only.
-uuid are 128 bit number so we can use uuid also.
+uuid -- which is universal unique identifier- which gives incremetal id from uuuid v7 and internally it is integer only.
+uuid are 128 bit number..
 
+For small-scale projects or systems with no strict ordering, UUIDs can work.
+❌ For a Twitter-scale system, Snowflake-like IDs are much better.
 
+Not Sequential	UUIDs are random, making it hard to sort tweets chronologically.
+Indexing Overhead	Random distribution leads to poor database indexing performance.
 
 
 
