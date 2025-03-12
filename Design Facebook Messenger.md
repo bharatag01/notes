@@ -40,9 +40,10 @@ it is both. message read atleast 1 time and send also 1 time.
 **How server will send a message to reciever**
 
 there are 3 ways
-polling- receiver always poll to server is ther any message for me. so it is not real time.
-long polling- server always create a new connection with reciever one any message comes. so multiple connection.
-websocket-it will create the pipeline between sender and receiver. only connection created once.
+
+1) polling- receiver always poll to server is ther any message for me. so it is not real time.
+2)long polling- server always create a new connection with reciever one any message comes. so multiple connection.
+3) websocket-it will create the pipeline between sender and receiver. only connection created once.
 
 **How to make sure messsage is delivered only once.**
 
