@@ -52,6 +52,27 @@ By using imdempotency
 every message has timestamp(last character typed) +user_id+device_id to identify duplciate message.
 
 **How to shard data.**
+user_id and conversation_id
+
+one to one 
+
+sent-2     1
+get-1      1
+getList-1  all
+
+recent_conversation table shard by user_id to overcome all shard in case of getallconversation (user)
+
+user_id  conversation_id
+101      1011
+101      1012
+
+group chat-- conversation id +user_id
+
+sent-500(inefficent)  1+max users of that group(because recent conversation also changed) --so 
+will update the recet_conversation table here not all 500 shards. because recent conversation have max 1 tb data because it conatins
+only user_id and conversation id of that user. 
+get-1                 1
+getList-1  
 
 we can do sharding by user_id because it is 1:1 chat not group chat
 but in case of group chat we can use the comination of conversation_id+user_id.
