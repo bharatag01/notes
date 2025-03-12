@@ -91,6 +91,12 @@ so we save in cache also and in next retry in save in shard of a also.
 we can use cache to avoid multiple read from DB and save last 24 hrs messages in cache and user wil read from cache
 and also while writing will write through cache and for DB will use cassadra DB because of heavy write.
 
+Query Type	Why it’s Needed?	How Cassandra Optimizes?
+Send a message	  High write throughput	   Fast sequential writes (SSTables)
+Get recent messages	Load last 50 messages instantly	Sorted by timestamp (no full scan)
+Fetch chat history	Load messages from last week/month	Time-range queries work efficiently
+Global delivery	Users from different countries need real-time updates	Multi-region replication
+
 
 
 
