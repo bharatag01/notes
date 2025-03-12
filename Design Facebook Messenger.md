@@ -39,13 +39,16 @@ it is both. message read atleast 1 time and send also 1 time.
 
 **How server will send a message to reciever**
 
-By using websocket
-it will create the pipeline between sender and receiver. only connection created once.
+there are 3 ways
+polling- receiver always poll to server is ther any message for me. so it is not real time.
+long polling- server always create a new connection with reciever one any message comes. so multiple connection.
+websocket-it will create the pipeline between sender and receiver. only connection created once.
 
 **How to make sure messsage is delivered only once.**
 
+suppose client doesnt get ack after x sec so it retires so how server identifies it is duplicate request.
 By using imdempotency
-every message has timestamp+user_id+device_id to identify duplciate message.
+every message has timestamp(last character typed) +user_id+device_id to identify duplciate message.
 
 **How to shard data.**
 
