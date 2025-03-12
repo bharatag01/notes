@@ -80,8 +80,11 @@ For systems like, Slack, MS Team, Telegram that can have large groups, userID ba
 
 **How to maintain consistency of messages.**
 
+here we want consistent sytem so if save in shard a first and it fails so we have to do rollback also in shard A and user
+confuse first it is hwoing send now error.
 suppose messages is going to send between A->B .so A gets delivered but B is not able to see the mesage.
 so first save in shard B and then A. suppose it doesnt save in shard A then take it from browser cache.
+so we save in cache also and in next retry in save in shard of a also.
 
 **which DB to use**
 
