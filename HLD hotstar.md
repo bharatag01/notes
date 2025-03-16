@@ -108,3 +108,5 @@ CloudFront (or Akamai) fetches chunks from S3 and caches them at edge locations.
 5️⃣ User Playback: The player downloads the .m3u8 file (metadata) from the CDN and fetches video chunks.
 
 ✅ S3 is the origin storage, but CDN is used for fast playback.
+
+NOTE- HOW LIVE STREAMING WORKS, VIDEO STREAMING, CDN,S3.
