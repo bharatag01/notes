@@ -81,7 +81,7 @@ con
 not exact
 suppose if request comes at 10:00:56,10:00:57,10:00:58,10:00:59,10:01:00,10:01:01,10:01:02
 
-so you serve 7 request within 1 min.
+so you serve 7 request within 1 min. in tis partcular window which is in 1 min I allow 7 request.
 
 **approach 3**
 
