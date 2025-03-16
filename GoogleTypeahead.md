@@ -55,6 +55,16 @@ Top5Suggestions HashMap stores the top five suggestions corresponding to all pos
 but we cant store both hashmap in 1 db so we have to store in cache machines like key value.
 we need to do sharding also so we can use sharding key as first 3 char.
 
+getSuggestion()
+{
+return suggestionMap(term);
+}
+
+updaecount(term)
+{
+UpdatedMap.get(term))+1
+}
+
 
 **how to handle read heavy and write heavy both**
 
