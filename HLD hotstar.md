@@ -82,7 +82,14 @@ post processing steps after video upload
 video streaming
 
 FE sends the request to server to get the metadata so we get the streaming url of cdn and failover cdn url after that request goes to cdn 
-url and it downloads few chunks and before finishing the 1 chunk it download few more chunks 
+url and it downloads few chunks and before finishing the 1 chunk it download few more chunks.
+
+Example Flow:
+
+A user requests a video.
+The request first goes to the CDN.
+Cache hit: If the chunk is in the CDN, it serves it immediately.
+Cache miss: The CDN fetches the chunk from S3 and caches it for future users.
 
 live streaming
 The camera captures a live match and sends the feed to Hotstar’s encoding server.
