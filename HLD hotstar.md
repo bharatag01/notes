@@ -109,4 +109,9 @@ CloudFront (or Akamai) fetches chunks from S3 and caches them at edge locations.
 
 ✅ S3 is the origin storage, but CDN is used for fast playback.
 
+**DATABASE**
+
+1) postgressql for metadata--- because video has structured data. 
+2) watch history and recommendation - cassandra because of heavy writes
+
 NOTE- HOW LIVE STREAMING WORKS, VIDEO STREAMING, CDN,S3.
