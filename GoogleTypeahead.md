@@ -88,6 +88,8 @@ Architectural diagram
 user---> LB--->App Server---->cache---asynchronsly aved in db--DB
 
 
+**Notes - in deep dive will discuss  hashmap ,sharding , samplling, time decay**
+
 
 
 
