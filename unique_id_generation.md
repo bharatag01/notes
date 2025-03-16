@@ -1,10 +1,11 @@
 **Functional**
 
 1) create an id when requested. so it is individual service which cretaes the id who ever service requested.
-   it should be integer id.
-   increasing id.
-   it should be 64 bit long.
-   it should be random because if public id are consecutive so it should easy to predict the id sequence.
+   it should be integer not string
+   it should be 64 bit long. 
+   increasing id.  if public id are consecutive so it should easy to predict the id sequence.
+   it should no be random also like 1 2 41 then 30 not correct because when we write the data so we have to move 30 before 41 so writes will slow.
+   because in db it stored in increasing order.
 
 **Non functional**
 
