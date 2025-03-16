@@ -61,6 +61,14 @@ if an shard is down so also we can return the result.
 whatever data we get from shards , combine it and return .
 so we should do sharding by doc_id.
 
+suppose delhi is the capial of india
+and delhi is in shard 1 and capial is in shard 2 and shard1 not reachable so it will never return the result.
+
+but in case of sharding by doc _id 
+in 1 shard - delhi is capital of india and in shard 2 delhi cm is in jail so will get the result if shard1 is down also.
+
+also if we are doing sharding by doc _id so also we need inverted index because in each shard it serach the word in inverted index only.
+
 here we will use elastic search no sql db. 
 
 if million query per second so we need to create replica of each shard.
