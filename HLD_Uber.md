@@ -58,9 +58,11 @@ but here we are dealing with tree only so instead of that we can use geohash.
 it is similar like apprach but geohash dvide the world into equal parts and each location have some prefix.
 so azu=india and if azumz=UP.
 
-we can use no sql DB like redis which supports geohash and if any driver send the location 
+we can use cache like redis which supports geohash and if any driver send the location 
 suppose UpateDriverLocation(driver_id,lat,lon)
 so it calculates teh geohash of new location and update the new location in cache.
+
+it stores map like geohash and cab_id.
 
 getNearbyDrivers(lat,long)
 calcualte geohash of location and search List cab=cache.get(geoHash);--egg01
