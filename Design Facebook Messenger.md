@@ -98,5 +98,7 @@ Fetch chat history	Load messages from last week/month	Time-range queries work ef
 Global delivery	Users from different countries need real-time updates	Multi-region replication
 
 
+**notes- here we discuss about web socket, idempotency(to avoid duplicate messsage), sharding,consistency of messsages.**
+
 
 
