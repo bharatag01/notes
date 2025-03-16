@@ -1,6 +1,7 @@
 **Functional**
 
 1) create an id when requested. so it is individual service which cretaes the id who ever service requested.
+   
    it should be integer not string
    it should be 64 bit long. 
    increasing id.  if public id are consecutive so it should easy to predict the id sequence.
