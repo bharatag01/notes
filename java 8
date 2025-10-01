@@ -6,8 +6,23 @@ it has only 1 abstract method but default and static methods we can define.
 
 Ex- runnable , callable, comparable
 
+so steam() is introduced in List interface but actually they defined it if they dont define so existing classes will break which was earlier working
+with java 1.7.
 
-most imp-
+before java 8 it was object oriented programming language only but after java 8 it becomes oops+functional programming also.
+why lambda expression
+so before lambda we have to write anoymous class and it is boilerplate code.
+Lambda expressions in Java make your code shorter, cleaner, and easier to maintain, 
+especially when dealing with functional interfaces, collections, and streams.
+
+to solve diamnond problem  in java 1.8 where I and J are interface buut they ahve default method show in both 
+so we have to define show method in class also which implemnets the interface.
+
+THIRD RULE
+if class A has method and inteface I and J has also same method and if we write class B extends A implements I,J
+so it will take the mthod of class A because class method has more power and visibily tahn default methods.
+
+most imp
 
 1) predicate--boolean test(T t);
 2) supplier--T get()
